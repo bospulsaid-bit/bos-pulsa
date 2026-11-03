@@ -1,0 +1,786 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071d49">
+<meta name="description" content="BOS PULSA - Solusi Digital Praktis untuk Anda.">
+<title>BOS PULSA | Solusi Digital Praktis</title>
+
+<style>
+:root {
+  --navy: #071d49;
+  --blue: #0876c9;
+  --light: #eff6ff;
+  --green: #19b979;
+  --text: #172554;
+  --muted: #64748b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f8ff;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+header {
+  background: var(--navy);
+  color: white;
+  padding: 17px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.logo span { color: #35c5ff; }
+
+nav {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover { color: #35c5ff; }
+
+.nav-cart {
+  background: var(--blue);
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+.hero {
+  background: linear-gradient(135deg, #071d49, #0876c9);
+  color: white;
+  text-align: center;
+  padding: 85px 7%;
+}
+
+.hero h1 {
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  color: #dcecff;
+  max-width: 600px;
+  margin: 0 auto 25px;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  background: var(--green);
+  color: white;
+  padding: 13px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn:hover {
+  opacity: .88;
+  transform: translateY(-2px);
+}
+
+.btn-blue { background: var(--blue); }
+
+.btn-dark { background: var(--navy); }
+
+section {
+  padding: 65px 7%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.section-title h2 {
+  color: var(--navy);
+  font-size: 29px;
+}
+
+.section-title p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.panel {
+  background: white;
+  padding: 28px;
+  border-radius: 17px;
+  box-shadow: 0 5px 22px rgba(0,0,0,.05);
+  max-width: 700px;
+  margin: auto;
+}
+
+.form-group { margin-bottom: 17px; }
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #dbe4f0;
+  border-radius: 9px;
+  background: white;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--blue);
+}
+
+.help {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background: white;
+  border-radius: 15px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,.05);
+}
+
+.product .icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.product h3 { color: var(--navy); }
+
+.product p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 8px 0 16px;
+}
+
+.product button {
+  width: 100%;
+}
+
+.cart-area {
+  background: var(--light);
+}
+
+.cart-item {
+  background: white;
+  padding: 17px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-item small { color: var(--muted); }
+
+.cart-actions {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.qty-btn, .remove-btn {
+  border: none;
+  padding: 7px 11px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.qty-btn {
+  background: #eaf3ff;
+  color: var(--blue);
+}
+
+.remove-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 30px;
+}
+
+.cart-note {
+  background: #fff7df;
+  color: #795b00;
+  padding: 13px;
+  border-radius: 9px;
+  font-size: 13px;
+  margin: 18px 0;
+}
+
+.advantages {
+  background: white;
+}
+
+.advantage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 22px;
+  text-align: center;
+}
+
+.advantage {
+  padding: 20px;
+}
+
+.advantage .icon {
+  font-size: 36px;
+}
+
+.advantage p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.contact {
+  background: linear-gradient(135deg, #071d49, #0876c9);
+  text-align: center;
+  color: white;
+}
+
+.contact p {
+  margin: 12px 0 22px;
+}
+
+footer {
+  background: #06152f;
+  color: #cbd5e1;
+  text-align: center;
+  padding: 30px 7%;
+  font-size: 13px;
+}
+
+footer strong { color: white; }
+
+.hidden { display: none !important; }
+
+.status {
+  color: var(--green);
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+@media(max-width: 600px) {
+  header { justify-content: center; }
+  nav { justify-content: center; gap: 12px; }
+  nav a { font-size: 12px; }
+  section { padding: 50px 5%; }
+  .hero { padding: 70px 6%; }
+  .panel { padding: 20px; }
+  .cart-item { align-items: flex-start; flex-direction: column; }
+  .cart-actions { flex-wrap: wrap; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">BOS <span>PULSA</span></div>
+  <nav>
+    <a href="#beranda">Beranda</a>
+    <a href="#layanan">Layanan</a>
+    <a href="#registrasi">Registrasi</a>
+    <a href="#keranjang" class="nav-cart">
+      🛒 Keranjang (<span id="cartCount">0</span>)
+    </a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="beranda">
+  <h1>Solusi Digital Praktis untuk Anda.</h1>
+  <p>
+    Pulsa, paket data, token listrik, dan pembayaran digital.
+    Semua kebutuhan dalam satu tempat.
+  </p>
+  <a href="#layanan" class="btn">Mulai Belanja</a>
+</section>
+
+<!-- REGISTRASI -->
+<section id="registrasi">
+  <div class="section-title">
+    <h2>Registrasi Pelanggan</h2>
+    <p>Daftarkan identitas sebelum melakukan pemesanan.</p>
+  </div>
+
+  <div class="panel">
+    <div id="registerForm">
+      <div class="form-group">
+        <label for="customerName">Nama Lengkap</label>
+        <input id="customerName" type="text"
+          placeholder="Masukkan nama lengkap"
+          maxlength="60" autocomplete="name">
+      </div>
+
+      <div class="form-group">
+        <label for="customerPhone">Nomor WhatsApp</label>
+        <input id="customerPhone" type="tel"
+          placeholder="Contoh: 081234567890"
+          maxlength="16" autocomplete="tel">
+        <p class="help">Gunakan nomor WhatsApp aktif.</p>
+      </div>
+
+      <button class="btn btn-blue" id="registerBtn">
+        Daftar Sekarang
+      </button>
+    </div>
+
+    <div id="registered" class="hidden">
+      <h3>Selamat datang, <span id="displayName"></span>!</h3>
+      <p class="help" id="displayPhone"></p>
+      <p class="status">✓ Registrasi tersimpan di perangkat ini.</p>
+      <button class="btn btn-dark" id="editProfile"
+        style="margin-top:15px">
+        Ubah Identitas
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- KATALOG -->
+<section id="layanan">
+  <div class="section-title">
+    <h2>Katalog Layanan</h2>
+    <p>Pilih layanan digital yang kamu butuhkan.</p>
+  </div>
+
+  <div class="products">
+
+    <div class="product">
+      <div class="icon">📱</div>
+      <h3>Pulsa Reguler</h3>
+      <p>Pulsa untuk berbagai operator seluler.</p>
+      <button class="btn btn-blue add-product"
+        data-category="Pulsa Reguler">
+        + Tambah ke Keranjang
+      </button>
+    </div>
+
+    <div class="product">
+      <div class="icon">🌐</div>
+      <h3>Paket Data</h3>
+      <p>Paket internet untuk kebutuhan harian.</p>
+      <button class="btn btn-blue add-product"
+        data-category="Paket Data">
+        + Tambah ke Keranjang
+      </button>
+    </div>
+
+    <div class="product">
+      <div class="icon">⚡</div>
+      <h3>Token Listrik</h3>
+      <p>Token listrik prabayar.</p>
+      <button class="btn btn-blue add-product"
+        data-category="Token Listrik">
+        + Tambah ke Keranjang
+      </button>
+    </div>
+
+    <div class="product">
+      <div class="icon">💳</div>
+      <h3>Pembayaran Digital</h3>
+      <p>Layanan pembayaran digital sesuai ketersediaan.</p>
+      <button class="btn btn-blue add-product"
+        data-category="Pembayaran Digital">
+        + Tambah ke Keranjang
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- KERANJANG -->
+<section class="cart-area" id="keranjang">
+  <div class="section-title">
+    <h2>🛒 Keranjang Belanja</h2>
+    <p>Periksa kembali pesanan sebelum checkout.</p>
+  </div>
+
+  <div class="panel">
+
+    <div id="cartList">
+      <div class="empty">
+        Keranjang masih kosong.<br>
+        Silakan pilih produk terlebih dahulu.
+      </div>
+    </div>
+
+    <div class="cart-note">
+      Harga dan ketersediaan produk akan dikonfirmasi oleh
+      admin BOS PULSA melalui WhatsApp.
+    </div>
+
+    <button class="btn" id="checkoutBtn" style="width:100%">
+      Checkout melalui WhatsApp
+    </button>
+  </div>
+</section>
+
+<!-- KEUNGGULAN -->
+<section class="advantages">
+  <div class="section-title">
+    <h2>Mengapa BOS PULSA?</h2>
+    <p>Kemudahan layanan digital untuk semua.</p>
+  </div>
+
+  <div class="advantage-grid">
+    <div class="advantage">
+      <div class="icon">🚀</div>
+      <h3>Praktis</h3>
+      <p>Pemesanan mudah dalam satu website.</p>
+    </div>
+
+    <div class="advantage">
+      <div class="icon">🛒</div>
+      <h3>Keranjang Belanja</h3>
+      <p>Kumpulkan beberapa produk sebelum memesan.</p>
+    </div>
+
+    <div class="advantage">
+      <div class="icon">🤝</div>
+      <h3>Pelayanan Ramah</h3>
+      <p>Konfirmasi pesanan langsung dengan admin.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <h2>Butuh Bantuan?</h2>
+  <p>Hubungi admin BOS PULSA melalui WhatsApp.</p>
+  <a class="btn"
+    href="https://wa.me/62882006688791"
+    target="_blank" rel="noopener">
+    Hubungi Admin
+  </a>
+</section>
+
+</main>
+
+<footer>
+  <strong>BOS PULSA</strong>
+  <p>Solusi Digital Praktis untuk Anda.</p>
+  <p>WhatsApp: 0882006688791</p>
+  <p>© 2026 BOS PULSA. Hak cipta dilindungi.</p>
+</footer>
+
+<script>
+const WA_NUMBER = "62882006688791";
+
+const STORAGE_PROFILE = "bos_pulsa_customer_v2";
+const STORAGE_CART = "bos_pulsa_cart_v2";
+
+let customer = null;
+let cart = [];
+
+function loadData() {
+  try {
+    customer = JSON.parse(
+      localStorage.getItem(STORAGE_PROFILE)
+    );
+    cart = JSON.parse(
+      localStorage.getItem(STORAGE_CART)
+    ) || [];
+    if (!Array.isArray(cart)) cart = [];
+  } catch (error) {
+    customer = null;
+    cart = [];
+  }
+}
+
+function saveProfile() {
+  localStorage.setItem(
+    STORAGE_PROFILE,
+    JSON.stringify(customer)
+  );
+}
+
+function saveCart() {
+  localStorage.setItem(
+    STORAGE_CART,
+    JSON.stringify(cart)
+  );
+}
+
+function showProfile() {
+  const form = document.getElementById("registerForm");
+  const registered = document.getElementById("registered");
+
+  if (customer) {
+    form.classList.add("hidden");
+    registered.classList.remove("hidden");
+    document.getElementById("displayName").textContent =
+      customer.name;
+    document.getElementById("displayPhone").textContent =
+      customer.phone;
+  } else {
+    form.classList.remove("hidden");
+    registered.classList.add("hidden");
+  }
+}
+
+function normalizePhone(phone) {
+  return phone.replace(/[\s-]/g, "");
+}
+
+document.getElementById("registerBtn").addEventListener(
+  "click", function() {
+    const name = document.getElementById("customerName")
+      .value.trim();
+    const phone = normalizePhone(
+      document.getElementById("customerPhone").value.trim()
+    );
+
+    if (name.length < 2) {
+      alert("Masukkan nama lengkap yang benar.");
+      return;
+    }
+
+    if (!/^(\+62|62|0)[0-9]{8,13}$/.test(phone)) {
+      alert("Nomor WhatsApp tidak valid.");
+      return;
+    }
+
+    customer = { name, phone };
+    saveProfile();
+    showProfile();
+
+    alert("Registrasi berhasil. Selamat berbelanja!");
+  }
+);
+
+document.getElementById("editProfile").addEventListener(
+  "click", function() {
+    document.getElementById("customerName").value =
+      customer.name;
+    document.getElementById("customerPhone").value =
+      customer.phone;
+    customer = null;
+    localStorage.removeItem(STORAGE_PROFILE);
+    showProfile();
+  }
+);
+
+// TAMBAH PRODUK
+document.querySelectorAll(".add-product").forEach(button => {
+  button.addEventListener("click", function() {
+    if (!customer) {
+      alert("Silakan registrasi terlebih dahulu.");
+      document.getElementById("registrasi")
+        .scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    const category = this.dataset.category;
+
+    const detail = prompt(
+      "Masukkan detail " + category +
+      "\nContoh: Telkomsel 10.000 atau nomor tujuan."
+    );
+
+    if (!detail || !detail.trim()) return;
+
+    cart.push({
+      id: Date.now() + Math.random(),
+      category: category,
+      detail: detail.trim(),
+      qty: 1
+    });
+
+    saveCart();
+    renderCart();
+
+    alert("Produk berhasil dimasukkan ke keranjang!");
+    document.getElementById("keranjang")
+      .scrollIntoView({ behavior: "smooth" });
+  });
+});
+
+// TAMPILKAN KERANJANG
+function renderCart() {
+  const list = document.getElementById("cartList");
+  const count = document.getElementById("cartCount");
+
+  count.textContent = cart.reduce(
+    (total, item) => total + item.qty, 0
+  );
+
+  if (cart.length === 0) {
+    list.innerHTML =
+      '<div class="empty">Keranjang masih kosong.<br>' +
+      'Silakan pilih produk terlebih dahulu.</div>';
+    return;
+  }
+
+  list.innerHTML = "";
+
+  cart.forEach(item => {
+    const row = document.createElement("div");
+    row.className = "cart-item";
+
+    const info = document.createElement("div");
+    const title = document.createElement("strong");
+    title.textContent = item.category;
+
+    const detail = document.createElement("br");
+    const small = document.createElement("small");
+    small.textContent = item.detail;
+
+    info.append(title, detail, small);
+
+    const actions = document.createElement("div");
+    actions.className = "cart-actions";
+
+    const minus = document.createElement("button");
+    minus.className = "qty-btn";
+    minus.textContent = "−";
+    minus.setAttribute("aria-label", "Kurangi jumlah");
+    minus.addEventListener("click", () => changeQty(item.id, -1));
+
+    const qty = document.createElement("span");
+    qty.textContent = item.qty;
+
+    const plus = document.createElement("button");
+    plus.className = "qty-btn";
+    plus.textContent = "+";
+    plus.setAttribute("aria-label", "Tambah jumlah");
+    plus.addEventListener("click", () => changeQty(item.id, 1));
+
+    const remove = document.createElement("button");
+    remove.className = "remove-btn";
+    remove.textContent = "Hapus";
+    remove.addEventListener("click", () => removeItem(item.id));
+
+    actions.append(minus, qty, plus, remove);
+    row.append(info, actions);
+    list.appendChild(row);
+  });
+}
+
+function changeQty(id, amount) {
+  const item = cart.find(product => product.id === id);
+  if (!item) return;
+
+  item.qty += amount;
+
+  if (item.qty <= 0) {
+    removeItem(id);
+    return;
+  }
+
+  saveCart();
+  renderCart();
+}
+
+function removeItem(id) {
+  cart = cart.filter(item => item.id !== id);
+  saveCart();
+  renderCart();
+}
+
+// CHECKOUT WHATSAPP
+document.getElementById("checkoutBtn").addEventListener(
+  "click", function() {
+    if (!customer) {
+      alert("Silakan registrasi terlebih dahulu.");
+      document.getElementById("registrasi")
+        .scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    if (cart.length === 0) {
+      alert("Keranjang masih kosong.");
+      return;
+    }
+
+    let message =
+      "HALO BOS PULSA, SAYA INGIN MEMESAN.%0A";
+
+    let text =
+      "HALO BOS PULSA, SAYA INGIN MEMESAN.\n\n" +
+      "DATA PELANGGAN\n" +
+      "Nama: " + customer.name + "\n" +
+      "WhatsApp: " + customer.phone + "\n\n" +
+      "DETAIL PESANAN\n";
+
+    cart.forEach((item, index) => {
+      text +=
+        (index + 1) + ". " + item.category + "\n" +
+        "Detail: " + item.detail + "\n" +
+        "Jumlah: " + item.qty + "\n\n";
+    });
+
+    text +=
+      "Mohon konfirmasi harga dan ketersediaan produk.\n" +
+      "Terima kasih.";
+
+    const url =
+      "https://wa.me/" + WA_NUMBER +
+      "?text=" + encodeURIComponent(text);
+
+    window.open(url, "_blank", "noopener");
+  }
+);
+
+// MULAI WEBSITE
+loadData();
+showProfile();
+renderCart();
+</script>
+
+</body>
+</html>
